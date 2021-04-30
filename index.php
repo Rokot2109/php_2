@@ -30,7 +30,7 @@
     При желании сделайте это задание через рекурсию.</p>
 
    <?php
-        $a = rand(1,15);
+        $a = rand(0,15);
         var_dump($a);
     switch ($a) {
         case 1:
@@ -68,6 +68,24 @@
         default:
             echo('неккоректный ввод');
     }
+?>
+<p style="color: indianred">Желание сделать рекурсией</p>
+<?php
+function find($a)
+{
+  if ($a < 0 || $a > 15) 
+    {
+      echo ('Число вне диапазона 0..15');
+      return;
+    } else 
+    {
+      echo $a;
+      $a++;
+      find($a);        
+    }
+}
+
+echo find(rand(0,15));
 ?>
 
 <p style="color: indianred">3. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
@@ -142,16 +160,21 @@ echo ("Функция с параметром delenie =  $All_operation". "<br>"
 <p style="color: indianred">6. *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power($val, $pow), где $val – заданное число, $pow – степень.
 </p>
 <?php 
-    function power($val, $pow){
-		if($val === 1 || $pow === 0){ 
-			return 1; 
-		}elseif ($pow > 0){
-			return ($val * power($val, $pow - 1));
-		} else {
-            $pow *= -1;
-            return 1 / power($val, $pow);
+    function power($val, $pow)
+    {
+      if($val === 1 || $pow === 0)
+        { 
+          return 1; 
         }
-    }
+      elseif ($pow > 0)
+        {
+          return ($val * power($val, $pow - 1));
+        } else 
+        {
+          $pow *= -1;
+          return 1 / power($val, $pow);
+        }
+      }
 	$Power_value = power(2,8);
 	echo ("2 в степени 8 будет равно = {$Power_value}"."<br>");	
 ?>
@@ -159,17 +182,17 @@ echo ("Функция с параметром delenie =  $All_operation". "<br>"
 <?php 
 $h = date("H");
 $m = date("i");
-    if ($h==1 || $h==21) {
-            $hours = " час";}
-    elseif (($h>=2 && $h<=4) || ($h>=22 && $h<=24)) {
-            $hours = " часа";}
+    if ($h==1 || $h==21) 
+        {$hours = " час";}
+    elseif (($h>=2 && $h<=4) || ($h>=22 && $h<=24)) 
+        {$hours = " часа";}
     else   {$hours = " часов";}
-        if (($m<20) || ($m>10)){
-            $minutes = " минут.";}
-    elseif (($m % 10) === 1) {
-            $minutes = " минута.";}
-    elseif ((($m % 10)>=2) && (($m % 10)<=4)) {
-            $minutes = " минуты.";}
+        if (($m<20) || ($m>10))
+        {$minutes = " минут.";}
+    elseif (($m % 10) === 1) 
+        {$minutes = " минута.";}
+    elseif ((($m % 10)>=2) && (($m % 10)<=4)) 
+        {$minutes = " минуты.";}
     else {$minutes = " минут.";}
 echo $h . $hours . " " . $m . $minutes;
 ?>
