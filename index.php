@@ -182,18 +182,16 @@ echo ("Функция с параметром delenie =  $All_operation". "<br>"
 <?php 
 $h = date("H");
 $m = date("i");
-    if ($h==1 || $h==21) 
+    if ($h%100 == 0 || ($h%100 >= 5 && $h%100 <= 20)) 
+        {$hours = " часов";}
+    elseif ($h%10 == 1)
         {$hours = " час";}
-    elseif (($h>=2 && $h<=4) || ($h>=22 && $h<=24)) 
-        {$hours = " часа";}
-    else   {$hours = " часов";}
-        if (($m<20) || ($m>10))
+    else   {$hours = " часа";}
+    if ($m%10 == 0 || ($m%10 >= 5 && $m%10 <= 9)  || ($m%100 >= 11 && $m%100 <= 14))
         {$minutes = " минут.";}
-    elseif (($m % 10) === 1) 
+    elseif ($m%10 == 1)
         {$minutes = " минута.";}
-    elseif ((($m % 10)>=2) && (($m % 10)<=4)) 
-        {$minutes = " минуты.";}
-    else {$minutes = " минут.";}
+    else {$minutes = " минуты.";}
 echo $h . $hours . " " . $m . $minutes;
 ?>
 
